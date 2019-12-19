@@ -13,8 +13,11 @@ import com.bumptech.glide.Glide
 import com.studio.suku.wisatah.R
 import com.studio.suku.ngitab.viewModel.SplashViewModel
 import kotlinx.android.synthetic.main.splash_fragment.*
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
-class SplashFragment : Fragment() {
+class SplashFragment : Fragment(), CoroutineScope {
+
 
     companion object {
         fun newInstance() = SplashFragment()
@@ -38,15 +41,16 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        launch {
+            delay(3000)
+            withContext(Dispatchers.Main){
+                this@SplashFragment.findNavController().navigate(R.id.loginFragment)
+            }
+        }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //Make
-        Handler().postDelayed({
-            this.findNavController().navigate(R.id.loginFragment)
-        }, 3000)
-    }
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + Job()
+
 
 }
