@@ -12,13 +12,13 @@ class ListViewModel : ViewModel() {
 
     var listPlaces : MutableLiveData<Array<ResponseObject>> = MutableLiveData()
 
-    fun requestListPlaces() : MutableLiveData<Array<ResponseObject>>{
+    fun requestListPlaces(){
         apiRepository.getListPlaces({
             listPlaces.postValue(it)
         },{
             Log.e("Ada Error", it.message)
         })
-        return listPlaces
+
     }
 
 }

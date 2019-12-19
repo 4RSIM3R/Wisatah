@@ -31,6 +31,7 @@ class ListFragment : Fragment() {
     }
 
     private lateinit var viewModel: ListViewModel
+    private var placesAdapter: PlacesAdapter = PlacesAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,13 +43,19 @@ class ListFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ListViewModel::class.java)
-        // TODO: Use the ViewModel
         list_places.setHasFixedSize(true)
         list_places.layoutManager = LinearLayoutManager(context)
-        viewModel.requestListPlaces().observe(viewLifecycleOwner, Observer {
+        viewModel.requestListPlaces()
+        observerPlacesData()
+
+    }
+
+    fun observerPlacesData(){
+        viewModel.listPlaces.observe(viewLifecycleOwner, Observer <Array<ResponseObject>>{
             it?.let {
-               var adapter = PlacesAdapter(it)
-                list_places.adapter = adapter
+                Log.d("Datanya", it.toString())
+                placesAdapter.setDataPlaces(it)
+                list_places.adapter = placesAdapter
             }
         })
     }
