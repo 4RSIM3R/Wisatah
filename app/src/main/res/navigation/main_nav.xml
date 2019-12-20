@@ -12,7 +12,7 @@
         <action
             android:id="@+id/action_to_login"
             app:destination="@+id/loginFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
+            app:enterAnim="@anim/fragment_close_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
 

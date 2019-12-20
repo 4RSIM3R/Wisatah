@@ -9,15 +9,17 @@
     tools:context=".view.SplashFragment">
 
 
-    <ImageView
-        android:id="@+id/image_logo"
-        android:layout_width="@dimen/logo_width"
-        android:layout_height="@dimen/logo_height"
-        android:src="@drawable/dot"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_logo"
+        android:layout_width="256dp"
+        android:layout_height="256dp"
+        android:scaleType="centerCrop"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_fileName="location.json"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/dot_logo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

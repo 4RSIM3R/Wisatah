@@ -8,6 +8,7 @@
     tools:context=".view.ListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        tools:listitem="@layout/row_places"
         android:id="@+id/list_places"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

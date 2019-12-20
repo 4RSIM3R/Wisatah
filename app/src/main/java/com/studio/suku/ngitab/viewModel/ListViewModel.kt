@@ -16,6 +16,7 @@ class ListViewModel : ViewModel() {
         if (listPlaces.value.isNullOrEmpty())
             apiRepository.getListPlaces({
                 listPlaces.postValue(it)
+                Log.d("Datnya", it.size.toString())
             },{
                 Log.e("Ada Error", it.message)
             })
