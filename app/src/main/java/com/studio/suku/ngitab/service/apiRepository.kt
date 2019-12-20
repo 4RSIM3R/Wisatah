@@ -17,9 +17,9 @@ class ApiRepository(){
 
     private lateinit var placesDataRequest : Request
 
-    fun getListPlaces(onSuccess: (Array<ResponseObject>) -> Unit, onError:(FuelError) -> Unit){
+    fun getListPlaces(onSuccess: (List<ResponseObject>) -> Unit, onError:(FuelError) -> Unit){
         Log.d("Suku", "Doing Request")
-        placesDataRequest = Fuel.get(Utility.url).responseObject<Array<ResponseObject>>{req, res, result ->
+        placesDataRequest = Fuel.get(Utility.url).responseObject<List<ResponseObject>>{req, res, result ->
             result.fold({
                 onSuccess(it)
             }, {

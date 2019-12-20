@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.kittinunf.fuel.core.HttpException
 import com.github.kittinunf.fuel.coroutines.awaitObjectResult
@@ -45,13 +46,11 @@ class ListFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(ListViewModel::class.java)
         list_places.setHasFixedSize(true)
         list_places.layoutManager = LinearLayoutManager(context)
-        viewModel.requestListPlaces()
         observerPlacesData()
-
     }
 
     fun observerPlacesData(){
-        viewModel.listPlaces.observe(viewLifecycleOwner, Observer <Array<ResponseObject>>{
+        viewModel.requestListPlaces().observe(viewLifecycleOwner, Observer <List<ResponseObject>>{
             it?.let {
                 Log.d("Datanya", it.toString())
                 placesAdapter.setDataPlaces(it)

@@ -3,6 +3,8 @@
     package="com.studio.suku.wisatah">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
     <application
         android:allowBackup="true"
@@ -11,6 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCLafBSSWDDJIIpEmst2l-riBvCq4RxR04"/>
         <activity android:name="com.studio.suku.ngitab.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

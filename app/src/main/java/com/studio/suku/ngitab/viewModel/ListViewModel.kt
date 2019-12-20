@@ -10,15 +10,16 @@ class ListViewModel : ViewModel() {
 
     val apiRepository = ApiRepository()
 
-    var listPlaces : MutableLiveData<Array<ResponseObject>> = MutableLiveData()
+    var listPlaces : MutableLiveData<List<ResponseObject>> = MutableLiveData<List<ResponseObject>>()
 
-    fun requestListPlaces(){
-        apiRepository.getListPlaces({
-            listPlaces.postValue(it)
-        },{
-            Log.e("Ada Error", it.message)
-        })
-
+    fun requestListPlaces() : MutableLiveData<List<ResponseObject>>{
+        if (listPlaces.value.isNullOrEmpty())
+            apiRepository.getListPlaces({
+                listPlaces.postValue(it)
+            },{
+                Log.e("Ada Error", it.message)
+            })
+        return listPlaces
     }
 
 }
